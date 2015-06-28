@@ -70,15 +70,15 @@ n<-10
 K<-round(d/n)-1
 X<-array(0,c(K))
 Z<-array(0,c(K,d1))
-for(k in 1:K){
-  for(i in (1+(k-1)*n):(k*n)){
+for(f in 1:K){
+  for(i in (1+(f-1)*n):(f*n)){
     for(j in 1:d1){
       if(topics[i]==topics1[j]){
-        Z[k,j]<-Z[k,j]+1}
+        Z[f,j]<-Z[f,j]+1}
       else{
-        Z[k,j]<-Z[k,j]
+        Z[f,j]<-Z[f,j]
         }
-      X[k]<-ranks[i]+X[k]
+      X[f]<-ranks[i]+X[f]
       }
     }
   }

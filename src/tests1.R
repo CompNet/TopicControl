@@ -1,4 +1,4 @@
-# setwd("D:/Eclipse/workspaces/Extraction")
+# setwd("D:/Eclipse/workspaces/Networks")
 # source("TopicControl/src/tests.R")
 
 source("TopicControl/src/functions.R")

@@ -1,10 +1,10 @@
-# setwd("D:/Eclipse/workspaces/Networks/TopicControl/")
+# setwd("D:/Eclipse/workspaces/Networks/")
 # source("properties.R")
 
 library("igraph")
 
 
-data.folder <- "data/"
+data.folder <- "TopicControl/data/"
 # layerID nodeID nodeID weight=1
 net.folder <- paste(data.folder,"Krackhardt8-High_Tech/",sep="")
 file.in <- paste(net.folder,"Krackhardt-High-Tech_multiplex.edges",sep="")

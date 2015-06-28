@@ -1,10 +1,10 @@
-# setwd("D:/Eclipse/workspaces/Networks/TopicControl/")
+# setwd("D:/Eclipse/workspaces/Networks/")
 # source("properties.R")
 
 library("igraph")
 
 
-data.folder <- "data/"
+data.folder <- "TopicControl/data/"
 # layerID nodeID nodeID weight=1
 net.folder <- paste(data.folder,"EU_Air_Transport/",sep="")
 file.in <- paste(net.folder,"EUAirTransportation_multiplex.edges",sep="")
