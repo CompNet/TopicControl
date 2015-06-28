@@ -57,11 +57,13 @@ for(folder in folders)
 	k <- k / apply(X=k, MARGIN=1, FUN=sum)
 	
 	# solve control pb
+	col <- 1
 	for(alpha in alphas)
 	{	for(beta in betas)
 		{	sol <- Control(E=adj,k,alpha,beta)
 			print(sol)
-			perf <- sol$solutionNorm
+			perfs[folder, col] <- sol$solutionNorm
+			col <- col + 1
 		}
 	}
 }
