@@ -25,9 +25,13 @@ folders <- c(
 		"Vickers_Chan_7thGraders/"
 )
 
-perfs <- matrix(NA, nrow=length(folders), ncol=length(betas)*length(alphas))
-rownames(perfs) <- folders
-colnames(perfs) <- apply(expand.grid(paste("a=",alphas,sep=""),paste("b=",betas,sep="")), 1, paste, collapse=";")
+# init performance matrix
+perfs.raw <- matrix(NA, nrow=length(folders), ncol=length(betas)*length(alphas))
+rownames(perfs.raw) <- folders
+colnames(perfs.raw) <- apply(expand.grid(paste("a=",alphas,sep=""),paste("b=",betas,sep="")), 1, paste, collapse=";")
+perfs.norm <- matrix(NA, nrow=length(folders), ncol=length(betas)*length(alphas))
+rownames(perfs.norm) <- rownames(perfs.raw)
+colnames(perfs.norm) <- colnames(perfs.raw)
 
 # process each real world network
 for(folder in folders)
@@ -62,12 +66,15 @@ for(folder in folders)
 	{	for(beta in betas)
 		{	sol <- Control(E=adj,k,alpha,beta)
 			print(sol)
-			perfs[folder, col] <- sol$solutionNorm
+			perfs.raw[folder, col] <- sol$solutionNorm
+			perfs.norm[folder, col] <- sol$solutionNorm / nodes
 			col <- col + 1
 		}
 	}
 }
 
-# record perf table
-perf.file <- paste(data.folder, "performances.txt", sep="")
-write.table(x=perfs, file=perf.file, row.names=TRUE, col.names=TRUE)
+# record perf tables
+perf.file <- paste(data.folder, "performances.raw.txt", sep="")
+write.table(x=perfs.raw, file=perf.file, row.names=TRUE, col.names=TRUE)
+perf.file <- paste(data.folder, "performances.norm.txt", sep="")
+write.table(x=perfs.norm, file=perf.file, row.names=TRUE, col.names=TRUE)
